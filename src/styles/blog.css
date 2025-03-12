@@ -1,0 +1,92 @@
+/* Blog post styles */
+.blog-content {
+  @apply prose prose-lg max-w-none;
+}
+
+/* Code block with language label */
+.code-block {
+  @apply relative;
+}
+
+.code-block-header {
+  @apply flex justify-between items-center absolute right-0 top-0 z-10 bg-gray-700 rounded-bl;
+}
+
+.code-language {
+  @apply px-2 py-1 text-xs font-mono font-semibold text-gray-200 uppercase;
+}
+
+.copy-button {
+  @apply p-1.5 text-gray-300 hover:text-white transition-colors focus:outline-none;
+}
+
+.copy-success {
+  @apply text-xs font-semibold text-green-400 px-2;
+}
+
+/* Dark mode overrides */
+.dark .blog-content {
+  @apply prose-invert;
+}
+
+/* Custom dark mode styling for better readability */
+.dark .blog-content h1,
+.dark .blog-content h2,
+.dark .blog-content h3,
+.dark .blog-content h4,
+.dark .blog-content h5,
+.dark .blog-content h6 {
+  @apply text-gray-100;
+}
+
+.dark .blog-content p,
+.dark .blog-content li,
+.dark .blog-content blockquote {
+  @apply text-gray-300;
+}
+
+.dark .blog-content a {
+  @apply text-indigo-400 hover:text-indigo-300;
+}
+
+.dark .blog-content strong {
+  @apply text-gray-200;
+}
+
+.dark .blog-content code:not(pre code) {
+  @apply bg-gray-800 text-gray-200 border border-gray-700;
+}
+
+.dark .blog-content pre {
+  @apply bg-gray-800 border border-gray-700;
+}
+
+.dark .blog-content img {
+  @apply border border-gray-700 rounded-md;
+}
+
+.dark .blog-content hr {
+  @apply border-gray-700;
+}
+
+.dark .blog-content table {
+  @apply border-gray-700;
+}
+
+.dark .blog-content th {
+  @apply bg-gray-800 text-gray-200 border-gray-700;
+}
+
+.dark .blog-content td {
+  @apply border-gray-700 text-gray-300;
+}
+
+/* KaTeX styles for dark mode */
+.dark .katex {
+  @apply text-gray-200;
+}
+
+/* Code syntax highlighting in dark mode */
+.dark .blog-content pre code span {
+  @apply text-gray-300;
+} 

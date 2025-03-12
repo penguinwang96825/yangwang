@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting...</title>
+  <script>
+    // Get the current path excluding the base path
+    const path = window.location.pathname.replace('/yangwang', '');
+    
+    // Redirect to the homepage with the route parameter
+    window.location.href = '/yangwang/#' + path;
+  </script>
+</head>
+<body>
+  <p>Redirecting to the homepage...</p>
+</body>
+</html> 

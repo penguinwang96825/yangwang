@@ -1,0 +1,112 @@
+# Personal Information
+name: Yang Wang
+title: Machine Learning and Natural Language Processing Researcher
+profileImage: /images/profile.jpg
+email: yangwang4work@gmail.com
+github: https://github.com/penguinwang96825
+linkedin: https://www.linkedin.com/in/wangyang825
+twitter: https://x.com/yangwang825
+resumeLink: /resume.pdf
+
+# Hero Section
+welcomeMessage: >
+  Welcome to my personal portfolio. I am passionate about machine learning, 
+  artificial intelligence, and their applications in solving complex problems.
+
+# About Section
+about: >
+  I am Machine Learning and Natural Language Processing Researcher at the University of Sheffield.
+
+# Show or hide sections
+showSkills: false
+
+# Education
+education:
+  - degree: MSc in Computer Science and Speech and Language Processing (Distinction)
+    institution: University of Sheffield
+    location: Sheffield, UK
+    period: September 2020 - September 2021
+    description: >
+      
+  - degree: BSc in Applied Mathematics
+    institution: National Chung Hsing University
+    location: Taichung, Taiwan
+    period: 2014 - 2018
+    description: >
+
+# Work Experience
+workExperience:
+  - position: Machine Learning and Natural Language Processing Researcher
+    company: University of Sheffield
+    location: Sheffield, UK
+    period: September 2023 - Present
+    description: >
+      Open-sourced Contrastive-based Fine-tuning (ConFit) for audio classification task.
+
+  - position: Data Scientist
+    company: Automated Analytics
+    location: Doncaster, UK
+    period: 2021 - 2023
+    description: >
+      Developed advanced models for call center data analysis.
+
+  - position: Research Intern
+    company: VoiceBase
+    location: Sheffield, UK
+    period: 2021 - 2022
+    description: >
+      Developed a Robust ASR system using x-vector to separate speaker embeddings in semantic space.
+
+# Publications
+publications:
+  - title: "Tougher Text, Smarter Models: Raising the Bar for Adversarial Defence Benchmarks"
+    conference: COLING 2025 (Oral)
+    authors: "Yang Wang, Chenghua Lin"
+    description: >
+      Presented an extensive benchmark for textual adversarial defence that significantly expands upon previous work
+
+  - title: "From Facts to Insights: A Study on the Generation and Evaluation of Analytical Reports for Deciphering Earnings Calls"
+    conference: COLING 2025 (Oral)
+    authors: "Tomas Goldsack, Yang Wang, Chenghua Lin, Chung-Chi Chen"
+    description: >
+      Explored the generation of analytical reports with LLMs in a multi-agent framework, designing specialized agents that introduce diverse viewpoints and desirable topics of analysis into the report generation process.
+
+  - title: "Adversarial Defence without Adversarial Defence: An Instance-level Principal Component Removal Approach"
+    conference: TACL 2025 (Under Review)
+    authors: "Yang Wang, Chenghao Xiao, Yizhi Li, Stuart Middleton, Noura Al Moubayed, Chenghua Lin"
+    description: >
+      Developed a novel instance-level adversarial defence method that removes the adversarial components from the input text.
+
+# Skills
+skills:
+  languages:
+    - name: Python
+      proficiency: 95
+    - name: C++
+      proficiency: 85
+    - name: JavaScript
+      proficiency: 80
+    - name: TypeScript
+      proficiency: 75
+    - name: SQL
+      proficiency: 90
+    - name: Rust
+      proficiency: 60
+
+  technologies:
+    - name: TensorFlow
+      proficiency: 90
+    - name: PyTorch
+      proficiency: 95
+    - name: React
+      proficiency: 80
+    - name: Node.js
+      proficiency: 75
+    - name: Docker
+      proficiency: 85
+    - name: Kubernetes
+      proficiency: 70
+    - name: AWS
+      proficiency: 80
+    - name: GCP
+      proficiency: 85 

@@ -1,0 +1,24 @@
+[
+  {
+    "slug": "attention",
+    "title": "attention",
+    "date": "2025-03-12",
+    "excerpt": "Write a brief excerpt for your blog post here.",
+    "coverImage": "/images/wallhaven-qdz6g7.jpg",
+    "tags": [
+      "uncategorized"
+    ]
+  },
+  {
+    "slug": "hello-world",
+    "title": "Hello World - My First Blog Post",
+    "date": "2024-03-12",
+    "excerpt": "This is my first blog post with markdown and LaTeX support.",
+    "coverImage": "/images/wallhaven-0jk3ey.jpg",
+    "tags": [
+      "markdown",
+      "LaTeX",
+      "blog"
+    ]
+  }
+]
