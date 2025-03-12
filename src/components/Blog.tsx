@@ -1,10 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { useBlogPosts } from '../utils/posts';
 
-// Define the blog post interface
-interface BlogPost {
+// Define the type for blog posts
+interface Post {
   slug: string;
   title: string;
   date: string;
@@ -13,39 +12,58 @@ interface BlogPost {
   tags: string[];
 }
 
-// This maps post slugs to their corresponding image paths in the public directory
-const imageMap: Record<string, string> = {
-  'hello-world': '/images/wallhaven-0jk3ey.jpg',
-  'query-key-value-attention': '/images/wallhaven-0jk3ey.jpg',
-  'custom-wallpaper': '/images/wallhaven-0jk3ey.jpg'
-};
-
 const Blog = () => {
-  const { posts, loading, error } = useBlogPosts();
+  const [posts, setPosts] = useState<Post[]>([]);
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
-  
-  // Extract unique tags from posts
-  const allTags = Array.from(
-    new Set(posts.flatMap(post => post.tags))
-  );
-  
-  const filteredPosts = selectedTag === 'all' || selectedTag === null
-    ? posts
-    : posts.filter(post => post.tags.includes(selectedTag || ''));
+  const [tags, setTags] = useState<string[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        setLoading(true);
+        // Fetch the posts index
+        const response = await fetch('/posts/index.json');
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch posts index');
+        }
+        
+        const postsData = await response.json();
+        
+        // Sort posts by date (newest first)
+        const sortedPosts = postsData.sort((a: Post, b: Post) => 
+          new Date(b.date).getTime() - new Date(a.date).getTime()
+        );
+        
+        setPosts(sortedPosts);
+        
+        // Extract unique tags from all posts
+        const allTags = sortedPosts.flatMap((post: Post) => post.tags);
+        const uniqueTags = [...new Set(allTags)] as string[];
+        setTags(uniqueTags);
+      } catch (error) {
+        console.error('Error fetching posts:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPosts();
+  }, []);
+
+  const handleTagClick = (tag: string) => {
+    setSelectedTag(prevTag => prevTag === tag ? null : tag);
+  };
+
+  const filteredPosts = selectedTag 
+    ? posts.filter(post => post.tags.includes(selectedTag))
+    : posts;
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-[50vh]">
+      <div className="flex justify-center items-center min-h-screen">
         <div className="animate-spin rounded-full h-12 w-12 border-4 border-indigo-500 border-t-transparent"></div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="container mx-auto px-4 py-12 text-center">
-        <h1 className="text-2xl font-bold text-red-600 mb-4">Error</h1>
-        <p className="text-gray-600 dark:text-gray-400 mb-8">{error}</p>
       </div>
     );
   }
@@ -56,85 +74,113 @@ const Blog = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen bg-white dark:bg-gray-900"
+      className="min-h-screen"
     >
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-8">Blog</h1>
+        <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-12 text-center">Blog</h1>
         
         {/* Tags filter */}
-        <div className="flex flex-wrap gap-2 mb-8">
+        <div className="mb-10 flex flex-wrap justify-center gap-2">
           <button
             onClick={() => setSelectedTag(null)}
-            className={`px-3 py-1 rounded-full text-sm ${
-              selectedTag === null
-                ? 'bg-indigo-600 text-white'
-                : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
+            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+              selectedTag === null 
+                ? 'bg-indigo-600 text-white' 
+                : 'bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600'
             }`}
           >
-            All
+            All Posts
           </button>
-          {allTags.map((tag) => (
+          {tags.map(tag => (
             <button
               key={tag}
-              onClick={() => setSelectedTag(tag)}
-              className={`px-3 py-1 rounded-full text-sm ${
-                selectedTag === tag
-                  ? 'bg-indigo-600 text-white'
-                  : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300'
+              onClick={() => handleTagClick(tag)}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                selectedTag === tag 
+                  ? 'bg-indigo-600 text-white' 
+                  : 'bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600'
               }`}
             >
               {tag}
             </button>
           ))}
         </div>
-
-        {/* Blog posts grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredPosts.map((post) => (
-            <Link
-              key={post.slug}
-              to={`/blog/${post.slug}`}
-              className="group bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
-            >
-              <div className="aspect-w-16 aspect-h-9 relative bg-gray-200 dark:bg-gray-800">
-                <img
-                  src={post.coverImage}
-                  alt={post.title}
-                  className="w-full h-48 object-cover"
-                  onError={(e) => {
-                    console.error(`Failed to load image: ${post.coverImage}`);
-                    const target = e.target as HTMLImageElement;
-                    target.src = 'https://via.placeholder.com/800x400?text=Blog+Post';
-                    target.onerror = null; // Prevent infinite error loop
-                  }}
-                />
-              </div>
-              <div className="p-6">
-                <h2 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400">
-                  {post.title}
-                </h2>
-                <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
-                  {post.excerpt}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {post.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        {filteredPosts.length === 0 && (
-          <div className="text-center py-12">
+        
+        {filteredPosts.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredPosts.map(post => (
+              <Link 
+                to={`/blog/${post.slug}`} 
+                key={post.slug}
+              >
+                <motion.article 
+                  className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-md rounded-xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 h-full flex flex-col"
+                  whileHover={{ y: -5 }}
+                >
+                  {/* Cover Image */}
+                  <div className="h-48 overflow-hidden bg-gray-200 dark:bg-gray-700">
+                    <img 
+                      src={post.coverImage} 
+                      alt={post.title} 
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = 'https://via.placeholder.com/800x400?text=Blog+Post'; 
+                      }}
+                    />
+                  </div>
+                  
+                  <div className="p-6 flex-grow">
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      {post.tags.map(tag => (
+                        <span 
+                          key={tag} 
+                          className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-xs"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    {/* Title */}
+                    <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3 line-clamp-2">
+                      {post.title}
+                    </h2>
+                    
+                    {/* Date */}
+                    <p className="text-gray-500 dark:text-gray-400 text-sm mb-3">
+                      {new Date(post.date).toLocaleDateString('en-US', { 
+                        year: 'numeric', 
+                        month: 'long', 
+                        day: 'numeric' 
+                      })}
+                    </p>
+                    
+                    {/* Excerpt */}
+                    <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+                      {post.excerpt}
+                    </p>
+                    
+                    {/* Read More */}
+                    <div className="text-indigo-600 dark:text-indigo-400 font-medium inline-flex items-center">
+                      Read More
+                      <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </div>
+                  </div>
+                </motion.article>
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-20">
+            <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+              No posts found{selectedTag ? ` with tag "${selectedTag}"` : ''}
+            </h2>
             <p className="text-gray-600 dark:text-gray-400">
-              No posts found for the selected tag.
+              {selectedTag ? 'Try selecting a different tag or' : 'Please check back later or'} try removing filters.
             </p>
           </div>
         )}
