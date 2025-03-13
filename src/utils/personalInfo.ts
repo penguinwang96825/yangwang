@@ -87,7 +87,7 @@ export const usePersonalInfo = () => {
     const fetchPersonalInfo = async () => {
       try {
         setLoading(true);
-        const response = await fetch('/data/personal-info.yaml');
+        const response = await fetch(`${import.meta.env.BASE_URL}data/personal-info.yaml`);
         
         if (!response.ok) {
           throw new Error('Failed to load personal information');

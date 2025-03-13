@@ -4,6 +4,16 @@ import { usePersonalInfo } from '../utils/personalInfo';
 const Home = () => {
   const { personalInfo, loading, error } = usePersonalInfo();
 
+  // Function to get absolute URL with the base path
+  const getAssetUrl = (path: string) => {
+    // If the path already starts with http or https, it's already an absolute URL
+    if (path.startsWith('http://') || path.startsWith('https://')) {
+      return path;
+    }
+    // Otherwise, prepend the base URL
+    return `${import.meta.env.BASE_URL}${path.startsWith('/') ? path.substring(1) : path}`;
+  };
+
   if (loading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
@@ -35,7 +45,7 @@ const Home = () => {
             <div className="md:w-1/3 mb-6 md:mb-0">
               <div className="w-48 h-48 mx-auto rounded-full overflow-hidden border-4 border-indigo-500 dark:border-indigo-400">
                 <img 
-                  src={personalInfo.profileImage}
+                  src={getAssetUrl(personalInfo.profileImage)}
                   alt={personalInfo.name} 
                   className="w-full h-full object-cover"
                   onError={(e) => {
@@ -59,7 +69,7 @@ const Home = () => {
                   Contact Me
                 </a>
                 <a 
-                  href={personalInfo.resumeLink} 
+                  href={getAssetUrl(personalInfo.resumeLink)} 
                   className="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-white px-4 py-2 rounded-md transition-colors duration-300"
                   target="_blank"
                   rel="noopener noreferrer"

@@ -22,8 +22,8 @@ export const useBlogPosts = () => {
     const fetchPosts = async () => {
       try {
         setLoading(true);
-        // Fetch the posts index file
-        const response = await fetch('/posts/index.json');
+        // Fetch the posts index file with correct base URL
+        const response = await fetch(`${import.meta.env.BASE_URL}posts/index.json`);
         if (!response.ok) {
           throw new Error('Failed to load blog posts');
         }
@@ -39,7 +39,7 @@ export const useBlogPosts = () => {
           title: 'Hello World - My First Blog Post',
           date: '2024-03-12',
           excerpt: 'This is my first blog post with markdown and LaTeX support.',
-          coverImage: '/images/wallhaven-0jk3ey.jpg',
+          coverImage: `${import.meta.env.BASE_URL}images/wallhaven-0jk3ey.jpg`,
           tags: ['markdown', 'LaTeX', 'blog'],
         }]);
       } finally {
@@ -73,8 +73,8 @@ export const useBlogPost = (slug: string | undefined) => {
         setLoading(true);
         setError(null);
 
-        // Fetch the post markdown file
-        const response = await fetch(`/posts/${slug}.md`);
+        // Fetch the post markdown file with correct base URL
+        const response = await fetch(`${import.meta.env.BASE_URL}posts/${slug}.md`);
         if (!response.ok) {
           throw new Error('Post not found');
         }

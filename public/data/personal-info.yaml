@@ -10,12 +10,16 @@ resumeLink: /resume.pdf
 
 # Hero Section
 welcomeMessage: >
-  Welcome to my personal portfolio. I am passionate about machine learning, 
-  artificial intelligence, and their applications in solving complex problems.
+  Welcome to Yang's space! My research centers around natural language processing, 
+  audio and speech language processing, and orthogonal complement projection theory. 
+  Beyond academia, I've played in the UK Super League, the top league in the UK.
 
 # About Section
 about: >
-  I am Machine Learning and Natural Language Processing Researcher at the University of Sheffield.
+  Currently researching at the University of Sheffield, where I dive into ML and NLP problems.
+  I'm all about cracking tough ideas with straightforward solutions - why make things complicated?
+  When I'm not coding, you might catch me explaining complex AI concepts to my friends over coffee,
+  usually with too many hand gestures and sketchy napkin diagrams.
 
 # Show or hide sections
 showSkills: false
@@ -31,7 +35,7 @@ education:
   - degree: BSc in Applied Mathematics
     institution: National Chung Hsing University
     location: Taichung, Taiwan
-    period: 2014 - 2018
+    period: September 2014 - June 2018
     description: >
 
 # Work Experience
