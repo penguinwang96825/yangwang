@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from 'react'
 import { Routes, Route, Link, useLocation, Navigate } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { OrbitControls, Text, Billboard, Html } from '@react-three/drei'
+import { OrbitControls, Billboard, Html } from '@react-three/drei'
 import 'katex/dist/katex.min.css'
 import katex from 'katex'
 

@@ -44,6 +44,7 @@ export interface ThemeColors {
   special: SpecialColorSettings;
   // Helper function to get a color with opacity
   getColorWithOpacity: (color: string, opacity: number) => string;
+  loading: boolean;
 }
 
 // Default colors in case the settings file fails to load
@@ -170,7 +171,7 @@ export function useColorSettings(): ThemeColors {
     return `rgba(${r}, ${g}, ${b}, ${opacity})`;
   };
   
-  return { colors, special, getColorWithOpacity };
+  return { colors, special, getColorWithOpacity, loading };
 }
 
 export default useColorSettings; 
