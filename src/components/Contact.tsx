@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import usePersonalInfo from '../utils/usePersonalInfo';
 
 interface FormData {
   name: string;
@@ -10,7 +9,6 @@ interface FormData {
 }
 
 const Contact = () => {
-  const { personalInfo } = usePersonalInfo();
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
