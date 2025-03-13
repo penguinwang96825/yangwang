@@ -16,8 +16,13 @@ welcomeMessage: >
 
 # About Section
 about: >
-  Currently researching at the University of Sheffield, where I dive into ML and NLP problems.
-  I'm all about cracking tough ideas with straightforward solutions.
+  I am currently a researcher in machine learning and natural language processing at the University of Sheffield. 
+  My work is driven by a passion for leveraging mathematical insights to develop innovative methods. 
+  Recently, I have focused on designing a robust loss function through polynomial approximation for 
+  margin-based loss in speaker verification, developing an instance-level principal component removal module for 
+  adversarial defence, and creating a differentiable Fourier layer that adaptively processes embeddings in the 
+  frequency domain to neutralise perturbations. These projects exemplify my commitment to integrating rigorous 
+  mathematical perspectives with practical applications in machine learning.
 
 # Show or hide sections
 showSkills: false

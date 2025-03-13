@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import usePersonalInfo from '../utils/usePersonalInfo';
 
 interface FormData {
   name: string;
@@ -9,6 +10,7 @@ interface FormData {
 }
 
 const Contact = () => {
+  const { personalInfo } = usePersonalInfo();
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -74,12 +76,12 @@ const Contact = () => {
       className="container mx-auto px-4 py-12"
     >
       <div className="max-w-3xl mx-auto">
-        <h1 className="text-4xl font-bold text-gray-800 dark:text-grayNurse mb-8">
+        <h1 className="text-4xl font-bold dark:text-white text-black mb-8">
           Contact Me
         </h1>
 
-        <div className="bg-white/70 dark:bg-black/70 backdrop-blur-md rounded-xl shadow-xl p-8 mb-8">
-          <p className="text-gray-600 dark:text-grayNurse mb-6">
+        <div className="bg-white dark:bg-black backdrop-blur-md rounded-xl shadow-xl p-8 mb-8">
+          <p className="dark:text-white text-black mb-6">
             I'm always interested in hearing about new opportunities, collaborations, or just having a chat 
             about technology and innovation. Feel free to reach out!
           </p>
@@ -88,7 +90,7 @@ const Contact = () => {
             <div>
               <label
                 htmlFor="name"
-                className="block text-sm font-medium text-gray-700 dark:text-grayNurse mb-1"
+                className="block text-sm font-medium dark:text-white text-black mb-1"
               >
                 Name
               </label>
@@ -99,14 +101,14 @@ const Contact = () => {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-black/80 text-gray-800 dark:text-grayNurse focus:ring-2 focus:ring-oxfordBlue focus:border-transparent transition-colors duration-300"
+                className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-black/80 text-black dark:text-white focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent transition-colors duration-300"
               />
             </div>
 
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-gray-700 dark:text-grayNurse mb-1"
+                className="block text-sm font-medium dark:text-white text-black mb-1"
               >
                 Email
               </label>
@@ -117,14 +119,14 @@ const Contact = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-black/80 text-gray-800 dark:text-grayNurse focus:ring-2 focus:ring-oxfordBlue focus:border-transparent transition-colors duration-300"
+                className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-black/80 text-black dark:text-white focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent transition-colors duration-300"
               />
             </div>
 
             <div>
               <label
                 htmlFor="subject"
-                className="block text-sm font-medium text-gray-700 dark:text-grayNurse mb-1"
+                className="block text-sm font-medium dark:text-white text-black mb-1"
               >
                 Subject
               </label>
@@ -135,14 +137,14 @@ const Contact = () => {
                 value={formData.subject}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-black/80 text-gray-800 dark:text-grayNurse focus:ring-2 focus:ring-oxfordBlue focus:border-transparent transition-colors duration-300"
+                className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-black/80 text-black dark:text-white focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent transition-colors duration-300"
               />
             </div>
 
             <div>
               <label
                 htmlFor="message"
-                className="block text-sm font-medium text-gray-700 dark:text-grayNurse mb-1"
+                className="block text-sm font-medium dark:text-white text-black mb-1"
               >
                 Message
               </label>
@@ -153,7 +155,7 @@ const Contact = () => {
                 onChange={handleChange}
                 required
                 rows={6}
-                className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-black/80 text-gray-800 dark:text-grayNurse focus:ring-2 focus:ring-oxfordBlue focus:border-transparent transition-colors duration-300"
+                className="w-full px-4 py-2 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-black/80 text-black dark:text-white focus:ring-2 focus:ring-[var(--color-accent)] focus:border-transparent transition-colors duration-300"
               />
             </div>
 
@@ -171,108 +173,11 @@ const Contact = () => {
 
             <button
               type="submit"
-              className="w-full bg-oxfordBlue hover:bg-oxfordBlue/80 text-white font-medium py-3 px-6 rounded-md transition-colors duration-300"
+              className="w-full bg-gray-800 hover:bg-gray-700 dark:bg-gray-200 dark:hover:bg-gray-300 text-white dark:text-black font-medium py-2 px-4 rounded-md transition-colors duration-300"
             >
               Send Message
             </button>
           </form>
-        </div>
-
-        <div className="bg-white/70 dark:bg-black/70 backdrop-blur-md rounded-xl shadow-xl p-8">
-          <h2 className="text-2xl font-bold text-gray-800 dark:text-grayNurse mb-6">
-            Other Ways to Connect
-          </h2>
-          
-          <div className="space-y-4">
-            <div className="flex items-center">
-              <svg
-                className="h-6 w-6 text-oxfordBlue dark:text-oxfordBlue mr-3"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                />
-              </svg>
-              <a
-                href="mailto:your.email@example.com"
-                className="text-gray-600 dark:text-grayNurse hover:text-oxfordBlue dark:hover:text-oxfordBlue"
-              >
-                your.email@example.com
-              </a>
-            </div>
-
-            <div className="flex items-center">
-              <svg
-                className="h-6 w-6 text-oxfordBlue dark:text-oxfordBlue mr-3"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-              </svg>
-              <span className="text-gray-600 dark:text-grayNurse">
-                San Francisco, CA
-              </span>
-            </div>
-
-            <div className="flex items-center">
-              <svg
-                className="h-6 w-6 text-oxfordBlue dark:text-oxfordBlue mr-3"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 10V3L4 14h7v7l9-11h-7z"
-                />
-              </svg>
-              <div className="flex space-x-4">
-                <a
-                  href="https://github.com/yourusername"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 dark:text-grayNurse hover:text-oxfordBlue dark:hover:text-oxfordBlue"
-                >
-                  GitHub
-                </a>
-                <a
-                  href="https://linkedin.com/in/yourusername"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 dark:text-grayNurse hover:text-oxfordBlue dark:hover:text-oxfordBlue"
-                >
-                  LinkedIn
-                </a>
-                <a
-                  href="https://twitter.com/yourusername"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 dark:text-grayNurse hover:text-oxfordBlue dark:hover:text-oxfordBlue"
-                >
-                  Twitter
-                </a>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </motion.div>
