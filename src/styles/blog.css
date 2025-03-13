@@ -9,15 +9,15 @@
 }
 
 .code-block-header {
-  @apply flex justify-between items-center absolute right-0 top-0 z-10 bg-gray-700 rounded-bl;
+  @apply flex justify-between items-center absolute right-0 top-0 z-10 bg-gray-700 dark:bg-black rounded-bl;
 }
 
 .code-language {
-  @apply px-2 py-1 text-xs font-mono font-semibold text-gray-200 uppercase;
+  @apply px-2 py-1 text-xs font-mono font-semibold text-gray-200 dark:text-grayNurse uppercase;
 }
 
 .copy-button {
-  @apply p-1.5 text-gray-300 hover:text-white transition-colors focus:outline-none;
+  @apply p-1.5 text-gray-300 dark:text-grayNurse/80 hover:text-white dark:hover:text-grayNurse transition-colors focus:outline-none;
 }
 
 .copy-success {
@@ -36,57 +36,57 @@
 .dark .blog-content h4,
 .dark .blog-content h5,
 .dark .blog-content h6 {
-  @apply text-gray-100;
+  @apply text-grayNurse;
 }
 
 .dark .blog-content p,
 .dark .blog-content li,
 .dark .blog-content blockquote {
-  @apply text-gray-300;
+  @apply text-grayNurse/90;
 }
 
 .dark .blog-content a {
-  @apply text-indigo-400 hover:text-indigo-300;
+  @apply text-oxfordBlue hover:text-oxfordBlue/80;
 }
 
 .dark .blog-content strong {
-  @apply text-gray-200;
+  @apply text-grayNurse;
 }
 
 .dark .blog-content code:not(pre code) {
-  @apply bg-gray-800 text-gray-200 border border-gray-700;
+  @apply bg-black/80 text-grayNurse border border-black/40;
 }
 
 .dark .blog-content pre {
-  @apply bg-gray-800 border border-gray-700;
+  @apply bg-black/80 border border-black/40;
 }
 
 .dark .blog-content img {
-  @apply border border-gray-700 rounded-md;
+  @apply border border-black/40 rounded-md;
 }
 
 .dark .blog-content hr {
-  @apply border-gray-700;
+  @apply border-black/40;
 }
 
 .dark .blog-content table {
-  @apply border-gray-700;
+  @apply border-black/40;
 }
 
 .dark .blog-content th {
-  @apply bg-gray-800 text-gray-200 border-gray-700;
+  @apply bg-black/80 text-grayNurse border-black/40;
 }
 
 .dark .blog-content td {
-  @apply border-gray-700 text-gray-300;
+  @apply border-black/40 text-grayNurse/90;
 }
 
 /* KaTeX styles for dark mode */
 .dark .katex {
-  @apply text-gray-200;
+  @apply text-grayNurse;
 }
 
 /* Code syntax highlighting in dark mode */
 .dark .blog-content pre code span {
-  @apply text-gray-300;
+  @apply text-grayNurse/90;
 } 

@@ -95,8 +95,8 @@ const Blog = () => {
             onClick={() => setSelectedTag(null)}
             className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
               selectedTag === null 
-                ? 'bg-indigo-600 text-white' 
-                : 'bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600'
+                ? 'bg-oxfordBlue text-white' 
+                : 'bg-gray-200 dark:bg-black/80 text-gray-800 dark:text-grayNurse hover:bg-gray-300 dark:hover:bg-black/60'
             }`}
           >
             All Posts
@@ -107,8 +107,8 @@ const Blog = () => {
               onClick={() => handleTagClick(tag)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                 selectedTag === tag 
-                  ? 'bg-indigo-600 text-white' 
-                  : 'bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600'
+                  ? 'bg-oxfordBlue text-white' 
+                  : 'bg-gray-200 dark:bg-black/80 text-gray-800 dark:text-grayNurse hover:bg-gray-300 dark:hover:bg-black/60'
               }`}
             >
               {tag}
@@ -124,11 +124,11 @@ const Blog = () => {
                 key={post.slug}
               >
                 <motion.article 
-                  className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-md rounded-xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 h-full flex flex-col"
+                  className="bg-white/70 dark:bg-black/70 backdrop-blur-md rounded-xl shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300 h-full flex flex-col"
                   whileHover={{ y: -5 }}
                 >
                   {/* Cover Image */}
-                  <div className="h-44 overflow-hidden rounded-t-lg bg-gray-200 dark:bg-gray-700">
+                  <div className="h-44 overflow-hidden rounded-t-lg bg-gray-200 dark:bg-black/90">
                     <img
                       src={getAssetUrl(post.coverImage)}
                       alt={post.title}
@@ -146,7 +146,7 @@ const Blog = () => {
                       {post.tags.map(tag => (
                         <span 
                           key={tag} 
-                          className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-xs"
+                          className="px-2 py-1 bg-gray-100 dark:bg-black/80 text-gray-700 dark:text-grayNurse rounded-full text-xs"
                         >
                           {tag}
                         </span>
@@ -154,12 +154,12 @@ const Blog = () => {
                     </div>
                     
                     {/* Title */}
-                    <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3 line-clamp-2">
+                    <h2 className="text-xl font-bold text-gray-900 dark:text-grayNurse mb-3 line-clamp-2">
                       {post.title}
                     </h2>
                     
                     {/* Date */}
-                    <p className="text-gray-500 dark:text-gray-400 text-sm mb-3">
+                    <p className="text-gray-500 dark:text-grayNurse/70 text-sm">
                       {new Date(post.date).toLocaleDateString('en-US', { 
                         year: 'numeric', 
                         month: 'long', 
@@ -168,12 +168,12 @@ const Blog = () => {
                     </p>
                     
                     {/* Excerpt */}
-                    <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+                    <p className="text-gray-600 dark:text-grayNurse/80 mb-4 line-clamp-3">
                       {post.excerpt}
                     </p>
                     
                     {/* Read More */}
-                    <div className="text-indigo-600 dark:text-indigo-400 font-medium inline-flex items-center">
+                    <div className="text-oxfordBlue dark:text-oxfordBlue font-medium inline-flex items-center">
                       Read More
                       <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />

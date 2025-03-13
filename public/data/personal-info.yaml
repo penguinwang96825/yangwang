@@ -17,9 +17,7 @@ welcomeMessage: >
 # About Section
 about: >
   Currently researching at the University of Sheffield, where I dive into ML and NLP problems.
-  I'm all about cracking tough ideas with straightforward solutions - why make things complicated?
-  When I'm not coding, you might catch me explaining complex AI concepts to my friends over coffee,
-  usually with too many hand gestures and sketchy napkin diagrams.
+  I'm all about cracking tough ideas with straightforward solutions.
 
 # Show or hide sections
 showSkills: false
@@ -50,14 +48,14 @@ workExperience:
   - position: Data Scientist
     company: Automated Analytics
     location: Doncaster, UK
-    period: 2021 - 2023
+    period: December 2021 - April 2023
     description: >
       Developed advanced models for call center data analysis.
 
   - position: Research Intern
     company: VoiceBase
     location: Sheffield, UK
-    period: 2021 - 2022
+    period: May 2021 - May 2022
     description: >
       Developed a Robust ASR system using x-vector to separate speaker embeddings in semantic space.
 
@@ -68,18 +66,28 @@ publications:
     authors: "Yang Wang, Chenghua Lin"
     description: >
       Presented an extensive benchmark for textual adversarial defence that significantly expands upon previous work
+    codeLink: https://github.com/PuReDefence/AdvBench4Text
+    pdfLink: https://aclanthology.org/2025.coling-main.432/
 
   - title: "From Facts to Insights: A Study on the Generation and Evaluation of Analytical Reports for Deciphering Earnings Calls"
     conference: COLING 2025 (Oral)
     authors: "Tomas Goldsack, Yang Wang, Chenghua Lin, Chung-Chi Chen"
     description: >
       Explored the generation of analytical reports with LLMs in a multi-agent framework, designing specialized agents that introduce diverse viewpoints and desirable topics of analysis into the report generation process.
+    pdfLink: https://aclanthology.org/2025.coling-main.705/
 
   - title: "Adversarial Defence without Adversarial Defence: An Instance-level Principal Component Removal Approach"
     conference: TACL 2025 (Under Review)
     authors: "Yang Wang, Chenghao Xiao, Yizhi Li, Stuart Middleton, Noura Al Moubayed, Chenghua Lin"
     description: >
       Developed a novel instance-level adversarial defence method that removes the adversarial components from the input text.
+
+  - title: "Audio Contrastive based Fine-tuning"
+    conference: ArXiv 2023
+    authors: "Yang Wang, Qibin Liang, Chenghao Xiao, Yizhi Li, Noura Al Moubayed, Chenghua Lin"
+    description: >
+      Introduced Audio Contrastive-based Fine-tuning (AudioConFit), an efficient approach characterised by robust generalisability. 
+    pdfLink: https://arxiv.org/abs/2309.11895
 
 # Skills
 skills:

@@ -5,11 +5,11 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative z-10 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md py-6 border-t border-gray-200 dark:border-gray-700">
+    <footer className="relative z-10 bg-white/80 dark:bg-black/80 backdrop-blur-md py-6 border-t border-gray-200 dark:border-black/40">
       <div className="container-custom">
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
-            <p className="text-gray-800 dark:text-white">
+            <p className="text-gray-800 dark:text-grayNurse">
               © {currentYear} {!loading && personalInfo.name}. All rights reserved.
             </p>
           </div>
@@ -19,7 +19,7 @@ const Footer = () => {
                 href={personalInfo.github} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white"
+                className="text-gray-600 dark:text-grayNurse hover:text-oxfordBlue dark:hover:text-oxfordBlue"
                 aria-label="GitHub Profile"
               >
                 <span className="sr-only">GitHub</span>
@@ -33,7 +33,7 @@ const Footer = () => {
                 href={personalInfo.twitter} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white"
+                className="text-gray-600 dark:text-grayNurse hover:text-oxfordBlue dark:hover:text-oxfordBlue"
                 aria-label="Twitter Profile"
               >
                 <span className="sr-only">Twitter</span>
@@ -47,7 +47,7 @@ const Footer = () => {
                 href={personalInfo.linkedin} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white"
+                className="text-gray-600 dark:text-grayNurse hover:text-oxfordBlue dark:hover:text-oxfordBlue"
                 aria-label="LinkedIn Profile"
               >
                 <span className="sr-only">LinkedIn</span>
@@ -59,7 +59,7 @@ const Footer = () => {
             {!loading && personalInfo.email && (
               <a 
                 href={`mailto:${personalInfo.email}`} 
-                className="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white"
+                className="text-gray-600 dark:text-grayNurse hover:text-oxfordBlue dark:hover:text-oxfordBlue"
                 aria-label="Email"
               >
                 <span className="sr-only">Email</span>

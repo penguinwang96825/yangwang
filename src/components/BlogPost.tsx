@@ -63,11 +63,11 @@ const BlogPost = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="min-h-screen bg-white dark:bg-gray-900"
+      className="min-h-screen bg-white dark:bg-black"
     >
       <article className="container mx-auto px-4 py-8">
         {/* Cover Image */}
-        <div className="w-full h-64 md:h-96 mb-8 bg-gray-200 dark:bg-gray-800 rounded-lg overflow-hidden">
+        <div className="w-full h-64 md:h-96 mb-8 bg-gray-200 dark:bg-black/80 rounded-lg overflow-hidden">
           <img
             src={getAssetUrl(post.coverImage)}
             alt={post.title}
@@ -83,10 +83,10 @@ const BlogPost = () => {
 
         {/* Post Header */}
         <header className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-grayNurse mb-4">
             {post.title}
           </h1>
-          <div className="flex flex-wrap items-center gap-4 text-gray-600 dark:text-gray-400 mb-4">
+          <div className="flex flex-wrap items-center gap-4 text-gray-600 dark:text-grayNurse/80 mb-4">
             <time dateTime={post.date}>
               {new Date(post.date).toLocaleDateString('en-US', {
                 year: 'numeric',
@@ -99,7 +99,7 @@ const BlogPost = () => {
             {post.tags.map((tag) => (
               <span
                 key={tag}
-                className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full text-sm"
+                className="px-3 py-1 bg-gray-100 dark:bg-black/80 text-gray-700 dark:text-grayNurse rounded-full text-sm"
               >
                 {tag}
               </span>
@@ -108,7 +108,7 @@ const BlogPost = () => {
         </header>
 
         {/* Post Content */}
-        <div className="blog-content">
+        <div className="blog-content dark:text-grayNurse">
           <ReactMarkdown
             remarkPlugins={[remarkMath]}
             rehypePlugins={[rehypeKatex]}
@@ -161,10 +161,10 @@ const BlogPost = () => {
         </div>
 
         {/* Navigation */}
-        <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
+        <div className="mt-12 pt-8 border-t border-gray-200 dark:border-black/40">
           <Link
             to="/blog"
-            className="inline-flex items-center text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300"
+            className="inline-flex items-center text-oxfordBlue dark:text-oxfordBlue hover:text-oxfordBlue/80 dark:hover:text-oxfordBlue/80"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

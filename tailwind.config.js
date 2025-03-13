@@ -6,6 +6,10 @@ export default {
   ],
   theme: {
     extend: {
+      colors: {
+        oxfordBlue: '#3C435B',
+        grayNurse: '#E0E5DD',
+      },
       typography: {
         DEFAULT: {
           css: {
@@ -39,7 +43,7 @@ export default {
         },
         dark: {
           css: {
-            color: '#e2e8f0',
+            color: '#E0E5DD',
             a: {
               color: '#63b3ed',
               '&:hover': {
@@ -47,22 +51,22 @@ export default {
               },
             },
             'h1,h2,h3,h4': {
-              color: '#f7fafc',
+              color: '#E0E5DD',
             },
             code: {
-              color: '#f7fafc',
-              backgroundColor: '#2d3748',
+              color: '#E0E5DD',
+              backgroundColor: '#3C435B',
               border: '1px solid #4a5568',
             },
             pre: {
-              backgroundColor: '#2d3748',
-              color: '#e2e8f0',
+              backgroundColor: '#3C435B',
+              color: '#E0E5DD',
             },
             strong: {
-              color: '#f7fafc',
+              color: '#E0E5DD',
             },
             blockquote: {
-              color: '#e2e8f0',
+              color: '#E0E5DD',
               borderLeftColor: '#4a5568',
             },
           },

@@ -2,6 +2,84 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    /* Light Mode - White with Chathams Blue */
+    --color-background: #ffffff;
+    --color-text: #1f2937;
+    --color-accent: #2A4B6A;      /* Chathams Blue */
+    --color-title: #111827;
+    --color-subtitle: #2A4B6A;    /* Chathams Blue */
+    --color-description: #4b5563;
+    --color-block: #ffffff;
+    --color-block-alpha: rgba(255, 255, 255, 0.7);
+    --color-border: #e5e7eb;
+    --color-border-alpha: rgba(229, 231, 235, 1);
+    --color-button: #2A4B6A;      /* Chathams Blue */
+    --color-button-text: #ffffff;
+    --color-button-hover: #2A4B6A;/* Chathams Blue */
+    --color-button-hover-alpha: rgba(42, 75, 106, 0.8);
+    --color-link: #2A4B6A;        /* Chathams Blue */
+    --color-link-hover: #2A4B6A;  /* Chathams Blue */
+    --color-link-hover-alpha: rgba(42, 75, 106, 0.8);
+    --color-nav-bg: #ffffff;
+    --color-nav-text: #4b5563;
+    --color-nav-active: #2A4B6A;  /* Chathams Blue */
+    --color-nav-active-text: #ffffff;
+    --color-code-bg: #f3f4f6;
+    --color-code-text: #1f2937;
+    --color-code-header: #2A4B6A; /* Chathams Blue */
+    --color-skill-bars: #2A4B6A;  /* Chathams Blue */
+    --color-social-icons: #2A4B6A;/* Chathams Blue */
+    --color-error: #ef4444;
+    --color-success: #10b981;
+    --color-info: #3b82f6;
+    --color-math-text: #111827;
+  }
+
+  .dark {
+    /* Dark Mode - Black with Complementary Color */
+    --color-background: #000000;
+    --color-text: #D5B495;        /* Complementary to Chathams Blue */
+    --color-accent: #D5B495;      /* Complementary to Chathams Blue */
+    --color-title: #ffffff;
+    --color-subtitle: #D5B495;    /* Complementary to Chathams Blue */
+    --color-description: #D5B495; /* Complementary to Chathams Blue */
+    --color-block: #000000;
+    --color-block-alpha: rgba(0, 0, 0, 0.7);
+    --color-border: #000000;
+    --color-border-alpha: rgba(0, 0, 0, 0.4);
+    --color-button: #D5B495;      /* Complementary to Chathams Blue */
+    --color-button-text: #000000;
+    --color-button-hover: #D5B495;/* Complementary to Chathams Blue */
+    --color-button-hover-alpha: rgba(213, 180, 149, 0.8);
+    --color-link: #D5B495;        /* Complementary to Chathams Blue */
+    --color-link-hover: #D5B495;  /* Complementary to Chathams Blue */
+    --color-link-hover-alpha: rgba(213, 180, 149, 0.8);
+    --color-nav-bg: #000000;
+    --color-nav-text: #FFFFFF;    /* White navigation text */
+    --color-nav-active: #000000;
+    --color-nav-active-text: #FFFFFF; /* White active navigation text */
+    --color-code-bg: #000000;
+    --color-code-text: #D5B495;   /* Complementary to Chathams Blue */
+    --color-code-header: #000000;
+    --color-skill-bars: #D5B495;  /* Complementary to Chathams Blue */
+    --color-social-icons: #D5B495;/* Complementary to Chathams Blue */
+    --color-error: #ef4444;
+    --color-success: #10b981;
+    --color-info: #3b82f6;
+    --color-math-text: #D5B495;   /* Complementary to Chathams Blue */
+  }
+  
+  .dark {
+    @apply bg-[var(--color-background)] text-[var(--color-text)];
+  }
+  
+  .dark body {
+    @apply bg-[var(--color-background)] text-[var(--color-text)];
+  }
+}
+
 @layer components {
   .container-custom {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
@@ -20,10 +98,81 @@
   }
   
   .dark .nav-link-inactive {
-    @apply text-gray-300 hover:bg-gray-700 hover:text-white;
+    @apply text-[var(--color-nav-text)] hover:bg-black hover:text-white;
   }
   
   .dark .nav-link-active {
-    @apply bg-gray-700 text-white;
+    @apply bg-[var(--color-nav-active)] text-[var(--color-nav-active-text)];
   }
+
+  /* Custom utility classes for the color system */
+  .bg-theme-primary {
+    @apply bg-[var(--color-accent)];
+  }
+
+  .text-theme-primary {
+    @apply text-[var(--color-accent)];
+  }
+
+  .bg-theme-block {
+    @apply bg-[var(--color-block-alpha)];
+  }
+
+  .border-theme {
+    @apply border-[var(--color-border-alpha)];
+  }
+
+  .btn-primary {
+    @apply bg-[var(--color-button)] text-[var(--color-button-text)] 
+           hover:bg-[var(--color-button-hover)] hover:opacity-80 transition-colors duration-300 
+           px-4 py-2 rounded-md;
+  }
+
+  .text-theme-title {
+    @apply text-[var(--color-title)];
+  }
+
+  .text-theme-subtitle {
+    @apply text-[var(--color-subtitle)];
+  }
+
+  .text-theme-description {
+    @apply text-[var(--color-description)];
+  }
+
+  .link-theme {
+    @apply text-[var(--color-link)] hover:text-[var(--color-link-hover)] hover:opacity-80 transition-colors;
+  }
+}
+
+/* Math formula styles for 3D background */
+.math-formula {
+  font-size: 1.5rem;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  transform: scale(1.2);
+  transition: all 0.3s ease;
+  opacity: 0.5;
+}
+
+.dark .math-formula {
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  color: var(--color-math-text);
+}
+
+.math-formula .katex {
+  font-size: inherit;
+}
+
+.math-formula .katex .katex-html {
+  white-space: nowrap;
+}
+
+.math-formula:hover {
+  transform: scale(1.4);
+  opacity: 0.8; /* Slightly more visible on hover */
+}
+
+/* Hide math background when disabled */
+.math-disabled .math-background {
+  display: none;
 }

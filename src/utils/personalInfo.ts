@@ -41,6 +41,8 @@ export interface Publication {
   conference: string;
   authors: string;
   description: string;
+  codeLink?: string; // Optional link to code repository
+  pdfLink?: string;  // Optional link to PDF paper
 }
 
 export interface Skills {

@@ -1,0 +1,102 @@
+# Yang Space - Color Configuration
+# Edit this file to customize the colors of your website.
+# Use hex color codes (#RRGGBB format).
+# After changing, restart the development server to see changes.
+
+# Dark Mode Color Configuration
+dark_mode:
+  # Main Colors
+  background_color: "#000000"  # Black background
+  text_color: "#D5B495"        # Complementary to Chathams Blue - Main text color
+  accent_color: "#D5B495"      # Complementary to Chathams Blue - Used for buttons, links, highlights
+  
+  # UI Elements
+  title_color: "#FFFFFF"       # Titles and headers
+  subtitle_color: "#D5B495"    # Subtitles (like your position/title)
+  description_color: "#D5B495" # Paragraph text
+  
+  # Component Colors
+  block_background: "#000000"  # Background for card/content blocks
+  block_opacity: 0.7           # Opacity for block backgrounds (0.0 to 1.0)
+  border_color: "#000000"      # Border color for UI elements
+  border_opacity: 0.4          # Opacity for borders (0.0 to 1.0)
+  
+  # Interactive Elements
+  button_color: "#D5B495"      # Background color for primary buttons
+  button_text_color: "#000000" # Text color for buttons
+  button_hover_color: "#D5B495" # Button color on hover
+  button_hover_opacity: 0.8    # Button opacity on hover (0.0 to 1.0)
+  
+  # Links
+  link_color: "#D5B495"        # Color for links and interactive elements
+  link_hover_color: "#D5B495"  # Color for links on hover
+  link_hover_opacity: 0.8      # Link opacity on hover (0.0 to 1.0)
+  
+  # Navigation
+  nav_background: "#000000"    # Navigation background
+  nav_text: "#FFFFFF"          # Navigation text - now white
+  nav_active: "#000000"        # Active navigation item background
+  nav_active_text: "#FFFFFF"   # Active navigation item text - now white
+  
+  # Code Blocks
+  code_background: "#000000"   # Background for code blocks
+  code_text: "#D5B495"         # Text color for code
+  code_header: "#000000"       # Header background for code blocks
+
+# Light Mode Color Configuration
+light_mode:
+  # Main Colors
+  background_color: "#FFFFFF"  # White background
+  text_color: "#1F2937"        # Main text color (gray-800)
+  accent_color: "#2A4B6A"      # Chathams Blue - Used for buttons, links, highlights
+  
+  # UI Elements
+  title_color: "#111827"       # Titles and headers (gray-900)
+  subtitle_color: "#2A4B6A"    # Subtitles (like your position/title)
+  description_color: "#4B5563" # Paragraph text (gray-600)
+  
+  # Component Colors
+  block_background: "#FFFFFF"  # Background for card/content blocks
+  block_opacity: 0.7           # Opacity for block backgrounds (0.0 to 1.0)
+  border_color: "#E5E7EB"      # Border color for UI elements (gray-200)
+  border_opacity: 1.0          # Opacity for borders (0.0 to 1.0)
+  
+  # Interactive Elements
+  button_color: "#2A4B6A"      # Background color for primary buttons
+  button_text_color: "#FFFFFF" # Text color for buttons
+  button_hover_color: "#2A4B6A" # Button color on hover
+  button_hover_opacity: 0.8    # Button opacity on hover (0.0 to 1.0)
+  
+  # Links
+  link_color: "#2A4B6A"        # Color for links and interactive elements
+  link_hover_color: "#2A4B6A"  # Color for links on hover
+  link_hover_opacity: 0.8      # Link opacity on hover (0.0 to 1.0)
+  
+  # Navigation
+  nav_background: "#FFFFFF"    # Navigation background
+  nav_text: "#4B5563"          # Navigation text (gray-600)
+  nav_active: "#2A4B6A"        # Active navigation item background
+  nav_active_text: "#FFFFFF"   # Active navigation item text
+  
+  # Code Blocks
+  code_background: "#F3F4F6"   # Background for code blocks (gray-100)
+  code_text: "#1F2937"         # Text color for code (gray-800)
+  code_header: "#2A4B6A"       # Header background for code blocks (Chathams Blue)
+
+# Special Elements - Dark Mode
+dark_mode_special:
+  skill_bars: "#D5B495"        # Progress bars for skills
+  social_icons: "#D5B495"      # Color for social media icons
+  error_message: "#EF4444"     # Color for error messages
+  success_message: "#10B981"   # Color for success messages
+  info_message: "#3B82F6"      # Color for info messages
+  math_text: "#D5B495"         # Color for math formulas
+
+# Special Elements - Light Mode
+light_mode_special:
+  skill_bars: "#2A4B6A"        # Progress bars for skills
+  social_icons: "#2A4B6A"      # Color for social media icons
+  error_message: "#EF4444"     # Color for error messages
+  success_message: "#10B981"   # Color for success messages
+  info_message: "#3B82F6"      # Color for info messages
+  math_text: "#111827"         # Color for math formulas 
