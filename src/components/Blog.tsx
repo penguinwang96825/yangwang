@@ -1,79 +1,68 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-
-// Define the type for blog posts
-interface Post {
-  slug: string;
-  title: string;
-  date: string;
-  excerpt: string;
-  coverImage: string;
-  tags: string[];
-}
-
-// Helper function to get asset URL with base path
-const getAssetUrl = (path: string) => {
-  // If the path already starts with http or https, it's already an absolute URL
-  if (path && (path.startsWith('http://') || path.startsWith('https://'))) {
-    return path;
-  }
-  // Otherwise, prepend the base URL
-  return `${import.meta.env.BASE_URL}${path && path.startsWith('/') ? path.substring(1) : path}`;
-};
+import { getImagePath } from '../utils/imageUtils';
+import { useBlogPosts } from '../utils/posts';
 
 const Blog = () => {
-  const [posts, setPosts] = useState<Post[]>([]);
+  const { posts, loading, error } = useBlogPosts();
   const [selectedTag, setSelectedTag] = useState<string | null>(null);
-  const [tags, setTags] = useState<string[]>([]);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        setLoading(true);
-        // Fetch the posts index with correct base URL
-        const response = await fetch(`${import.meta.env.BASE_URL}posts/index.json`);
-        
-        if (!response.ok) {
-          throw new Error('Failed to fetch posts index');
-        }
-        
-        const postsData = await response.json();
-        
-        // Sort posts by date (newest first)
-        const sortedPosts = postsData.sort((a: Post, b: Post) => 
-          new Date(b.date).getTime() - new Date(a.date).getTime()
-        );
-        
-        setPosts(sortedPosts);
-        
-        // Extract unique tags from all posts
-        const allTags = sortedPosts.flatMap((post: Post) => post.tags);
-        const uniqueTags = [...new Set(allTags)] as string[];
-        setTags(uniqueTags);
-      } catch (error) {
-        console.error('Error fetching posts:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPosts();
-  }, []);
+  // Get unique tags from all posts
+  const tags = Array.from(new Set(posts.flatMap(post => post.tags || [])));
 
   const handleTagClick = (tag: string) => {
     setSelectedTag(prevTag => prevTag === tag ? null : tag);
   };
 
   const filteredPosts = selectedTag 
-    ? posts.filter(post => post.tags.includes(selectedTag))
+    ? posts.filter(post => post.tags?.includes(selectedTag))
     : posts;
 
   if (loading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
         <div className="animate-spin rounded-full h-12 w-12 border-4 border-indigo-500 border-t-transparent"></div>
+      </div>
+    );
+  }
+  
+  if (error) {
+    return (
+      <div className="text-center py-20">
+        <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+          Error Loading Posts
+        </h2>
+        <p className="text-gray-600 dark:text-gray-400 mb-8">
+          {error}
+        </p>
+        <button
+          onClick={() => window.location.reload()}
+          className="px-4 py-2 bg-gray-800 text-white rounded-md hover:bg-gray-700 transition-colors"
+        >
+          Refresh
+        </button>
+      </div>
+    );
+  }
+
+  // Log empty posts array for debugging
+  if (posts.length === 0) {
+    console.warn('No posts available to display');
+    return (
+      <div className="text-center py-20">
+        <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">
+          No blog posts found
+        </h2>
+        <p className="text-gray-600 dark:text-gray-400 mb-8">
+          We're having trouble loading the blog posts. Please try again later.
+        </p>
+        <button
+          onClick={() => window.location.reload()}
+          className="px-4 py-2 bg-gray-800 text-white rounded-md hover:bg-gray-700 transition-colors"
+        >
+          Refresh
+        </button>
       </div>
     );
   }
@@ -130,12 +119,14 @@ const Blog = () => {
                   {/* Cover Image */}
                   <div className="h-44 overflow-hidden rounded-t-lg bg-gray-200 dark:bg-black/90">
                     <img
-                      src={getAssetUrl(post.coverImage)}
+                      src={getImagePath(post.coverImage)}
                       alt={post.title}
                       className="w-full h-full object-cover"
                       onError={(e) => {
+                        console.error(`Failed to load image: ${post.coverImage}`);
                         const target = e.target as HTMLImageElement;
                         target.src = 'https://via.placeholder.com/800x400?text=Blog+Post';
+                        target.onerror = null; // Prevent infinite error loop
                       }}
                     />
                   </div>
@@ -143,7 +134,7 @@ const Blog = () => {
                   <div className="p-6 flex-grow">
                     {/* Tags */}
                     <div className="flex flex-wrap gap-2 mb-3">
-                      {post.tags.map(tag => (
+                      {post.tags?.map(tag => (
                         <span 
                           key={tag} 
                           className="px-2 py-1 bg-gray-100 dark:bg-black/80 text-gray-700 dark:text-grayNurse rounded-full text-xs"

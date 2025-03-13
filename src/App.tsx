@@ -12,6 +12,7 @@ import Blog from './components/Blog'
 import BlogPost from './components/BlogPost'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import ScrollToTop from './components/ScrollToTop'
 
 // Import hooks and providers
 import useTheme from './hooks/useTheme'
@@ -315,6 +316,9 @@ function App() {
             </div>
           </main>
 
+          {/* Scroll to top button */}
+          <ScrollToTop />
+          
           {/* Footer */}
           <Footer />
         </div>

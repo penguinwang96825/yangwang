@@ -9,16 +9,7 @@ import 'katex/dist/katex.min.css';
 import '../styles/blog.css';
 import { useBlogPost } from '../utils/posts';
 import { useState } from 'react';
-
-// Helper function to get asset URL with base path
-const getAssetUrl = (path: string) => {
-  // If the path already starts with http or https, it's already an absolute URL
-  if (path && (path.startsWith('http://') || path.startsWith('https://'))) {
-    return path;
-  }
-  // Otherwise, prepend the base URL
-  return `${import.meta.env.BASE_URL}${path && path.startsWith('/') ? path.substring(1) : path}`;
-};
+import { getImagePath } from '../utils/imageUtils';
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -69,7 +60,7 @@ const BlogPost = () => {
         {/* Cover Image */}
         <div className="w-full h-64 md:h-96 mb-8 bg-gray-200 dark:bg-black/80 rounded-lg overflow-hidden">
           <img
-            src={getAssetUrl(post.coverImage)}
+            src={getImagePath(post.coverImage)}
             alt={post.title}
             className="w-full h-full object-cover"
             onError={(e) => {
